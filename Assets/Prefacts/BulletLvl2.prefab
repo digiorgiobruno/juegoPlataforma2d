@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e918a1a43fff7f449b23dbee0ccadd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  johnHit: {fileID: 8300000, guid: 32cf5dffeeea4a14fa30de8443f09d29, type: 3}
-  grunHit: {fileID: 8300000, guid: 79e11a7530c5b184a98939ffd2763dfe, type: 3}
-  Sound: {fileID: 8300000, guid: df8019454bfb56648abab30bf8cf6183, type: 3}
+  johnHit: {fileID: 8300000, guid: 79e11a7530c5b184a98939ffd2763dfe, type: 3}
+  grunHit: {fileID: 8300000, guid: 32cf5dffeeea4a14fa30de8443f09d29, type: 3}
+  Sound: {fileID: 8300000, guid: 278e8eec4f17bd04db165d1c598d93e8, type: 3}
   speed: 3
   direction: {x: 0, y: 0}

@@ -5,13 +5,15 @@ using UnityEngine;
 public class gruntScript : MonoBehaviour
 {
     private Animator Animator;
+    public AudioSource hitSound;
     public bool pjExplosion = false;
     public GameObject bulletPrefact;
     private float lastShoot;
     public float bulletTime;
     private Rigidbody2D Rigidbody2D;
     public GameObject John;
-    private int health = 3;
+    public int health = 3;
+    public float scale = 1;
     public AudioSource SoundExplosion;
     //public AudioClip SoundHit;
 
@@ -26,14 +28,14 @@ public class gruntScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+
         if (John == null) return;
         Vector3 direction = John.transform.position - transform.position;// la resta entre vectores obtiene el vector direccion entre los dos puntos
         if (direction.x >= 0.0f)
         {
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            transform.localScale = new Vector3(scale, scale, scale);
         }
-        else { transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f); }
+        else { transform.localScale = new Vector3(-scale, scale, scale); }
         float distance = Mathf.Abs(John.transform.position.x - transform.position.x);
 
         if (distance < 1.0f && Time.time > lastShoot + bulletTime && !pjExplosion)
@@ -53,8 +55,8 @@ public class gruntScript : MonoBehaviour
 
     public void hit()
     {
-        //Camera.main.GetComponent<AudioSource>().PlayOneShot(SoundHit);
         health = health - 1;
+        hitSound.Play();
         if (health == 0)
         {
             Rigidbody2D.simulated = false;

@@ -10,6 +10,7 @@ public class playerMove : MonoBehaviour
 
     public Image lifebar;
     public AudioSource johnDeadClip;
+    public AudioSource hitSound;
     public float bulletTime = 0.1f;
     public GameObject bulletPrefact;
     public GameObject bulletPrefactL2;
@@ -47,6 +48,7 @@ public class playerMove : MonoBehaviour
         //Debug.DrawRay(transform.position, Vector2.down * 0.1f, Color.red); 
         if (Physics2D.Raycast(transform.position, Vector2.down, 0.1f))
         {
+            //si el raycast choca con algo un maximo de distancia de 0.1f devolverá true
             Grounded = true;
         }
         else { Grounded = false; }
@@ -79,7 +81,7 @@ public class playerMove : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefactL2, transform.position + direction * 0.1f, Quaternion.identity);// instantiate instancia prefacts en alguna parte del mapa, quaternion.identity significa rotacion cero
             bullet.GetComponent<bulletScript>().setDiretion(direction);
-            Debug.Log("Ammo SAVE");
+            //Debug.Log("Ammo SAVE");
         }
         else
         {
@@ -97,6 +99,7 @@ public class playerMove : MonoBehaviour
     public void hit()
     {
         health = health - 1;
+        hitSound.Play();
         lifebar.fillAmount = health / healthMax;//va a ser un numero entre 0 y 1 representando el porcentaje del total de vida que nos queda.
         if (health == 0)
         {
@@ -117,4 +120,10 @@ public class playerMove : MonoBehaviour
         ammoSave = true;
 
     }
+    public void medicalKit()
+    {
+        health = healthMax;
+        lifebar.fillAmount = health / healthMax;
+    }
+
 }

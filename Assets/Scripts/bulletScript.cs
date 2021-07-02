@@ -6,8 +6,6 @@ public class bulletScript : MonoBehaviour
 {
     
     //public Sprite BulletLvl2;
-    public AudioClip johnHit;
-    public AudioClip grunHit;
     public AudioClip Sound;
     public float speed;
     public Vector2 direction;
@@ -45,12 +43,12 @@ public class bulletScript : MonoBehaviour
         gruntScript grunt = collision.GetComponent<gruntScript>();
         if (john != null)
         {
-            Camera.main.GetComponent<AudioSource>().PlayOneShot(johnHit);
+            //Camera.main.GetComponent<AudioSource>().PlayOneShot(johnHit);
             john.hit();
         }
         if (grunt != null)
         {
-            Camera.main.GetComponent<AudioSource>().PlayOneShot(grunHit);
+            //Camera.main.GetComponent<AudioSource>().PlayOneShot(grunHit);
             grunt.hit();
         }
         destroyBullet();
