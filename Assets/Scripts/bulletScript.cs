@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class bulletScript : MonoBehaviour
 {
+    
+    //public Sprite BulletLvl2;
+    public AudioClip johnHit;
+    public AudioClip grunHit;
+    public AudioClip Sound;
     public float speed;
     public Vector2 direction;
     private Rigidbody2D Rigidbody2D;
@@ -11,6 +16,9 @@ public class bulletScript : MonoBehaviour
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(Sound);
+        //GetComponent<SpriteRenderer>().sprite= BulletLvl2;
+        
     }
 
     // Update is called once per frame
@@ -26,17 +34,25 @@ public class bulletScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
+    public void changeSprite()
+    {
+        //GetComponent<SpriteRenderer>().sprite= BulletLvl2;
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerMove john = collision.GetComponent<playerMove>();
-        gruntScript grunt = collision.GetComponent < gruntScript >();
-    if(john!=null){
-        john.hit();
-    }
-    if(grunt!=null){
-        grunt.hit();
-    }
-    destroyBullet();
+        gruntScript grunt = collision.GetComponent<gruntScript>();
+        if (john != null)
+        {
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(johnHit);
+            john.hit();
+        }
+        if (grunt != null)
+        {
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(grunHit);
+            grunt.hit();
+        }
+        destroyBullet();
     }
 }

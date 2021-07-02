@@ -3,7 +3,9 @@ guid: 0b41b87764de9d84a919ff67509bea71
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - johnDeadClip: {instanceID: 0}
+  - bulletPrefact: {fileID: 1062153524428215389, guid: 8012622b3ab0c1440b50e3cdad760cdc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
