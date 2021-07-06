@@ -15,6 +15,7 @@ public class gruntScript : MonoBehaviour
     public int health = 3;
     public float scale = 1;
     public AudioSource SoundExplosion;
+    
     //public AudioClip SoundHit;
 
     // Start is called before the first frame update
@@ -28,7 +29,8 @@ public class gruntScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
+       
+        if(John.gameObject.GetComponent<playerMove>().JohnDead){return;}
         if (John == null) return;
         Vector3 direction = John.transform.position - transform.position;// la resta entre vectores obtiene el vector direccion entre los dos puntos
         if (direction.x >= 0.0f)

@@ -24,6 +24,8 @@ public class playerMove : MonoBehaviour
     public float healthMax = 15;
     public float health = 15;
     public bool ammoSave = false;
+    public bool JohnDead=false;
+    public GameObject GM;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,8 @@ public class playerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(JohnDead){return;}
+        if(GM.gameObject.GetComponent<GManager>().titanDead){return;}
         // Movimiento
         //"Horizontal" será 0 si no pulsamos nada, 1 si pulsamos la "a" y -1 si pulsamos la "d"
         Horizontal = Input.GetAxisRaw("Horizontal");// si pulsamos "a" devolverá -1, y si pulsamos "d",1. Para cambiar las teclas ir a project setting/input manager
@@ -98,6 +102,7 @@ public class playerMove : MonoBehaviour
     }
     public void hit()
     {
+        if(JohnDead){return;}
         health = health - 1;
         hitSound.Play();
         lifebar.fillAmount = health / healthMax;//va a ser un numero entre 0 y 1 representando el porcentaje del total de vida que nos queda.
@@ -112,6 +117,7 @@ public class playerMove : MonoBehaviour
     {
         johnDeadClip.Play();
         Animator.SetBool("dead", true);
+        JohnDead = true;
         //Destroy(gameObject);
     }
     public void ammo()

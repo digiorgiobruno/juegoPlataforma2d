@@ -7,8 +7,9 @@ using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
-    public AudioSource startSound,quitSound;
-    public Renderer background;
+    public AudioSource startSound, quitSound;
+
+    //public bool init = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (Input.GetKey(KeyCode.Return))
         {
             startSound.Play();
